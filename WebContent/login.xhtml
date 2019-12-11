@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+
+	<title>Login</title>
+	
+	<h:outputStylesheet library="css" name="b_styles.css"  />
+	<h:outputStylesheet library="css" name="add-student-style.css"  />
+	<h:outputStylesheet library="css" name="login-styles.css"/>	
+	
+</h:head>
+
+<h:body>
+	<div id="wrapper">
+		<div id="header">
+			<h2>Management System</h2>
+		</div>
+	</div>
+	
+	<h:messages globalOnly="true" />
+
+	<h:form id="form" style="margin-top: 10px;" >
+		<div id="container">
+			<div id="login-header">
+				<div class="login-header-text">Welcome</div>
+			</div>
+			<div class="panel-primary"></div>
+			<BR /><BR />
+			<div class="form-group" style="margin-bottom: 9px;">
+				<i id ="icon-padding" class="glyphicon glyphicon-user"></i> <h:inputText styleClass="textfield" value="#{login.username}" id="username"  a:placeholder="Username" required="true" requiredMessage = "Username is required!"/>
+			</div>
+			<div class="form-group" style="margin-bottom: 9px;">
+				<i id ="icon-padding" class="glyphicon glyphicon-lock"></i>  <h:inputSecret styleClass="textfield" value="#{login.password}" id="password" a:placeholder="Password" required="true" requiredMessage = "Password is required!"/>
+			</div>
+			<div class="error_message"><i><h:message for="username" /><h:outputText value="&#160;" /><h:message for="password" /></i></div>
+			<div class="click-container">
+				<h:commandButton value="Login" styleClass="btn btn-login" action="#{studentController.tryLogin(login)}"/>
+			</div>
+		</div>
+	</h:form>
+	
+	
+</h:body>
+</html>
