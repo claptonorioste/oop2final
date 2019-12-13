@@ -1,0 +1,83 @@
+#logo-container{
+	padding: 0;
+    position: absolute;
+    height: 65px;
+    width: 145px;
+    margin-top: -7px;
+    margin-left: 182px;
+}
+#contents{
+	height: 62px;
+    width: 100%;
+}
+.textfield{
+	width:85%;
+}
+.click-container {
+    transform: translate(0%,70%);
+    text-align:center;
+}
+.login-header-text {
+    color: white;
+    font-size: 20px;
+    left: 25%;
+    top: 10%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+}
+.form-group {
+    margin-bottom: 9px; 
+}
+.error_message {
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 68%;
+    transform: translate(-50%,0%);
+    text-align: center;
+    color: red;
+    font-size: 11px;
+}
+.btn-login {
+    width: 75%;
+    color: #fff;
+    background-color: #0775d3;
+    border-color: #0775d3;
+    border-radius: 10px;
+    display: inline-block;
+}
+.btn-login:hover {
+    color: #fff;
+    background-color: #0a80e4;
+    border-color: #0a80e4;
+}
+#icon-padding{
+	padding:15px;
+}
+#header-black{
+    z-index: 1000;
+    position: fixed;
+    height: 62px;
+    width: 100%;
+    border-bottom: 1px #AFAFAF solid;
+	background: url(logo/top_bg.png);
+}
+.app-title{
+	width: 300px;
+    height: 24px;
+    margin-top:  18px;
+    font-size: 15px;
+    position: absolute;
+    margin-left: 260px;
+    font-weight: bold;
+    color: #06482a;
+
+    line-height: 1.6;
+
+    font-family: 'Roboto Slab';
+}
+#login-header {
+    width: 50%;
+    height: 20%;
+    border-radius: 17px 0px;
+    background: #0775d3;}
