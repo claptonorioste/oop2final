@@ -12,33 +12,32 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-import elearning.modules.Student;
-import elearning.dbutils.StudentDbUtil;
+import elearning.modules.Country;
+import elearning.dbutils.CountryDbUtil;
 
 @ManagedBean
 @SessionScoped
-public class StudentController {
+public class CountryController {
+	private List<Country> country;
 
-private List<Student> student;
-
-	private StudentDbUtil studentDbUtil;
+	private CountryDbUtil countrydbutil;
 
 	private Logger logger = Logger.getLogger(getClass().getName());
 
-	public StudentController() throws Exception {
-		student = new ArrayList<>();
+	public CountryController() throws Exception {
+		country = new ArrayList<>();
 
-		studentDbUtil = StudentDbUtil.getInstance();
+		countrydbutil = CountryDbUtil.getInstance();
+	}
+	
+	public List<Country> getCountrys() {
+		return country;
 	}
 
-	public List<Student> getStudents() {
-		return student;
-	}
-
-	public String addStudent(Student student) {
-		logger.info("Adding Student: " + student);
+	public String addCountry(Country country) {
+		logger.info("Adding country: " + country);
 		try {
-			studentDbUtil.addStudent(student);;
+			countrydbutil.addCountry(country);
 
 		} catch (Exception exc) {
 			logger.log(Level.SEVERE, "Error adding students", exc);
@@ -48,27 +47,27 @@ private List<Student> student;
 		return "";
 	}
 
-	public void loadStudents() {
-		student.clear();
+	public void loadCountrys() {
+		country.clear();
 		try {
-			student = studentDbUtil.getStudent();
-			logger.info("loading Students");
+			country = countrydbutil.getCountry();
+			logger.info("loading country");
 
 		} catch (Exception exc) {
-			logger.log(Level.SEVERE, "Error loading Students", exc);
+			logger.log(Level.SEVERE, "Error loading country", exc);
 			addErrorMessage(exc);
 		}
 	}
 
-	public String loadStudent(int Studentid) {
-		logger.info("loading Student: " + Studentid);
+	public String loadCountry(int countryid) {
+		logger.info("loading country: " + countryid);
 		try {
 			// get student from database
-			Student student = studentDbUtil.getStudent(Studentid);
+			Country country = countrydbutil.getCountry(countryid);
 			// put in the request attribute ... so we can use it on the form page
 			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();		
 			Map<String, Object> requestMap = externalContext.getRequestMap();
-			requestMap.put("student", student);	
+			requestMap.put("country", country);	
 
 		} catch (Exception exc) {
 			return null;
@@ -76,13 +75,13 @@ private List<Student> student;
 		return "";
 	}	
 
-	public String updateStudent(Student student) {
-		logger.info("updating student: " + student);
+	public String updateStudent(Country country) {
+		logger.info("updating country: " + country);
 		try {
-			studentDbUtil.updateStudent(student);
+			countrydbutil.updateCountry(country);
 
 		} catch (Exception exc) {
-			logger.log(Level.SEVERE, "Error updating student: " + student, exc);
+			logger.log(Level.SEVERE, "Error updating country: " + country, exc);
 			addErrorMessage(exc);
 
 			return null;
@@ -90,19 +89,19 @@ private List<Student> student;
 		return "";		
 	}
 
-	public String deleteStudent(int StudentId) {
-		logger.info("Deleting Student id: " + StudentId);
+	public String deleteInstructor(int countryId) {
+		logger.info("Deleting country id: " + countryId);
 		try {
-			studentDbUtil.deleteStudent(StudentId);;
+			countrydbutil.deleteCountry(countryId);
 
 		} catch (Exception exc) {
-			logger.log(Level.SEVERE, "Error deleting Student id: " + StudentId, exc);
+			logger.log(Level.SEVERE, "Error deleting country id: " + countryId, exc);
 			addErrorMessage(exc);
 			return null;
 		}
 		return "";	
 	}
-
+	
 	private void addErrorMessage(Exception exc) {
 		FacesMessage message = new FacesMessage("Error: " + exc.getMessage());
 		FacesContext.getCurrentInstance().addMessage(null, message);

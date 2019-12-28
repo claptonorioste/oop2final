@@ -14,7 +14,7 @@ public class Student {
 	private String email;
 	private int countryId;
 	private int useraccId;
-	
+
 	public Student() {
 		super();
 	}
@@ -120,5 +120,5 @@ public class Student {
 				+ middleName + ", bday=" + bday + ", contactNo=" + contactNo + ", address=" + address + ", email="
 				+ email + ", countryId=" + countryId + ", useraccId=" + useraccId + "]";
 	}
-	
+
 }

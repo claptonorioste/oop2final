@@ -10,11 +10,11 @@ public class InstructorCourse {
 	private String dateCreated;
 	private String datePublish;
 	private double coursePrice;
-	
+
 	public InstructorCourse() {
 		super();
 	}
-	
+
 	public InstructorCourse(int inscourseId, int instructId, int courseId, String dateCreated,
 			String datePublish, double coursePrice) {
 		super();
@@ -67,5 +67,5 @@ public class InstructorCourse {
 				+ ", dateCreated=" + dateCreated + ", datePublish=" + datePublish + ", coursePrice=" + coursePrice
 				+ "]";
 	}
-	
+
 }

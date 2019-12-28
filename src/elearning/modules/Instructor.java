@@ -14,7 +14,7 @@ public class Instructor {
 	private String email;
 	private int countryId;
 	private int useraccId;
-	
+
 	public Instructor() {
 		super();
 	}

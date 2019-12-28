@@ -12,97 +12,95 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-import elearning.modules.Student;
-import elearning.dbutils.StudentDbUtil;
-
+import elearning.dbutils.SchoolDbUtil;
+import elearning.modules.School;
 @ManagedBean
 @SessionScoped
-public class StudentController {
+public class SchoolController {
+	private List<School> school;
 
-private List<Student> student;
-
-	private StudentDbUtil studentDbUtil;
+	private SchoolDbUtil schoolDbUtil;
 
 	private Logger logger = Logger.getLogger(getClass().getName());
 
-	public StudentController() throws Exception {
-		student = new ArrayList<>();
+	public SchoolController() throws Exception {
+		school = new ArrayList<>();
 
-		studentDbUtil = StudentDbUtil.getInstance();
+		schoolDbUtil = SchoolDbUtil.getInstance();
 	}
-
-	public List<Student> getStudents() {
-		return student;
+	
+	public List<School> getInstructorCourses() {
+		return school;
 	}
-
-	public String addStudent(Student student) {
-		logger.info("Adding Student: " + student);
+	//Add
+	public String addSchool(School school) {
+		logger.info("Adding school: " + school);
 		try {
-			studentDbUtil.addStudent(student);;
+			schoolDbUtil.addSchool(school);
 
 		} catch (Exception exc) {
-			logger.log(Level.SEVERE, "Error adding students", exc);
+			logger.log(Level.SEVERE, "Error adding school", exc);
 			addErrorMessage(exc);
 			return null;
 		}
 		return "";
 	}
-
-	public void loadStudents() {
-		student.clear();
+	//Load
+	public void loadSchools() {
+		school.clear();
 		try {
-			student = studentDbUtil.getStudent();
-			logger.info("loading Students");
+			school = schoolDbUtil.getSchool();
+			logger.info("loading school");
 
 		} catch (Exception exc) {
-			logger.log(Level.SEVERE, "Error loading Students", exc);
+			logger.log(Level.SEVERE, "Error loading school", exc);
 			addErrorMessage(exc);
 		}
 	}
-
-	public String loadStudent(int Studentid) {
-		logger.info("loading Student: " + Studentid);
+	//Load By Id
+	public String loadSchoolById(int schoolid) {
+		logger.info("loading school: " + schoolid);
 		try {
 			// get student from database
-			Student student = studentDbUtil.getStudent(Studentid);
+			School school = schoolDbUtil.getSchool(schoolid);
 			// put in the request attribute ... so we can use it on the form page
 			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();		
 			Map<String, Object> requestMap = externalContext.getRequestMap();
-			requestMap.put("student", student);	
+			requestMap.put("school", school);	
 
 		} catch (Exception exc) {
 			return null;
 		}
 		return "";
 	}	
-
-	public String updateStudent(Student student) {
-		logger.info("updating student: " + student);
+	//Update
+	public String updateSchool(School school) {
+		logger.info("updating school: " + school);
 		try {
-			studentDbUtil.updateStudent(student);
+			schoolDbUtil.updateSchool(school);
 
 		} catch (Exception exc) {
-			logger.log(Level.SEVERE, "Error updating student: " + student, exc);
+			logger.log(Level.SEVERE, "Error updating school: " + school, exc);
 			addErrorMessage(exc);
 
 			return null;
 		}
 		return "";		
 	}
-
-	public String deleteStudent(int StudentId) {
-		logger.info("Deleting Student id: " + StudentId);
+	//Delete
+	public String deleteSchool(int schoolId) {
+		logger.info("Deleting school id: " + schoolId);
 		try {
-			studentDbUtil.deleteStudent(StudentId);;
+			schoolDbUtil.deleteSchool(schoolId);;
 
 		} catch (Exception exc) {
-			logger.log(Level.SEVERE, "Error deleting Student id: " + StudentId, exc);
+			logger.log(Level.SEVERE, "Error deleting schoolsdescId id: " + schoolId, exc);
 			addErrorMessage(exc);
 			return null;
 		}
 		return "";	
 	}
-
+	//Error Message
 	private void addErrorMessage(Exception exc) {
 		FacesMessage message = new FacesMessage("Error: " + exc.getMessage());
 		FacesContext.getCurrentInstance().addMessage(null, message);

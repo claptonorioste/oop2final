@@ -15,31 +15,31 @@ import javax.sql.DataSource;
 import elearning.modules.InstructorCourse;
 
 public class InstructorCourseDbUtil {
-	
+
 	private static InstructorCourseDbUtil instance;
 	private DataSource dataSource;
 	private String jndiName = "java:comp/env/jdbc/elearning";
-	
+
 	public static InstructorCourseDbUtil getInstance() throws Exception {
 		if (instance == null) {
 			instance = new InstructorCourseDbUtil();
 		}
-		
+
 		return instance;
 	}
-	
+
 	private InstructorCourseDbUtil() throws Exception {		
 		dataSource = getDataSource();
 	}
 
 	private DataSource getDataSource() throws NamingException {
 		Context context = new InitialContext();
-		
+
 		DataSource theDataSource = (DataSource) context.lookup(jndiName);
-		
+
 		return theDataSource;
 	}
-	
+
 	public List<InstructorCourse> getInstructorCourse() throws Exception{
 		List<InstructorCourse> instructorcourses = new ArrayList<>();
 		Connection myConn = null;
@@ -50,7 +50,7 @@ public class InstructorCourseDbUtil {
 			String sql = "select * from tblinstructorcourse order by last_name";
 			myStmt = myConn.createStatement();
 			myRs = myStmt.executeQuery(sql);
-			
+
 			while (myRs.next()) {
 				int id = myRs.getInt("inscourseid");
 				int instructId = myRs.getInt("instructorid");
@@ -58,7 +58,7 @@ public class InstructorCourseDbUtil {
 				String dateCreated = myRs.getString("datecreated");
 				String datePublish = myRs.getString("datepublished");
 				Double coursePrice = myRs.getDouble("courseprice");
-				
+
 				InstructorCourse tempInstructorCourse = new InstructorCourse( id, instructId, courseId, dateCreated, datePublish, coursePrice);
 				instructorcourses.add(tempInstructorCourse);
 			}
@@ -68,7 +68,7 @@ public class InstructorCourseDbUtil {
 			close (myConn, myStmt, myRs);
 		}
 	}
-	
+
 	public void addInstructorCourse(InstructorCourse instructorcourse) throws Exception {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -87,7 +87,7 @@ public class InstructorCourseDbUtil {
 			close (myConn, myStmt);
 		}
 	}
-	
+
 	public InstructorCourse getInstructorCourse(int instructorcourseid) throws Exception {
 		InstructorCourse instructorcourse = null;
 		Connection myConn = null;
@@ -106,7 +106,7 @@ public class InstructorCourseDbUtil {
 				String dateCreated = myRs.getString("datecreated");
 				String datePublish = myRs.getString("datepublished");
 				Double coursePrice = myRs.getDouble("courseprice");
-				
+
 				instructorcourse =  new InstructorCourse( id, instructId, courseId, dateCreated, datePublish, coursePrice);
 			}
 			else {
@@ -119,7 +119,7 @@ public class InstructorCourseDbUtil {
 			close (myConn, myStmt, myRs);
 		}
 	}
-	
+
 	public void updateInstructorCourse(InstructorCourse instructorcourse) throws Exception{
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -141,7 +141,7 @@ public class InstructorCourseDbUtil {
 			close (myConn, myStmt);
 		}
 	}
-	
+
 	public void deleteInstructorCourse(int instructorcourseId) throws Exception {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -156,15 +156,15 @@ public class InstructorCourseDbUtil {
 			close (myConn, myStmt);
 		}
 	}
-	
+
 	private Connection getConnection() throws Exception {
 		return dataSource.getConnection();
 	}
-	
+
 	private void close(Connection theConn, Statement theStmt) {
 		close(theConn, theStmt, null);
 	}
-	
+
 	private void close(Connection theConn, Statement theStmt, ResultSet theRs) {
 		try {
 			if (theRs != null) {

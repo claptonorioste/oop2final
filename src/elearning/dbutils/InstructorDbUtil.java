@@ -12,34 +12,34 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import elearning.modules.*;
+import elearning.modules.Instructor;
 
 public class InstructorDbUtil {
-	
+
 	private static InstructorDbUtil instance;
 	private DataSource dataSource;
 	private String jndiName = "java:comp/env/jdbc/elearning";
-	
+
 	public static InstructorDbUtil getInstance() throws Exception {
 		if (instance == null) {
 			instance = new InstructorDbUtil();
 		}
-		
+
 		return instance;
 	}
-	
+
 	private InstructorDbUtil() throws Exception {		
 		dataSource = getDataSource();
 	}
 
 	private DataSource getDataSource() throws NamingException {
 		Context context = new InitialContext();
-		
+
 		DataSource theDataSource = (DataSource) context.lookup(jndiName);
-		
+
 		return theDataSource;
 	}
-	
+
 	public List<Instructor> getInstructor() throws Exception{
 		List<Instructor> instructors = new ArrayList<>();
 		Connection myConn = null;
@@ -50,7 +50,7 @@ public class InstructorDbUtil {
 			String sql = "select * from tblinstructorinfo order by last_name";
 			myStmt = myConn.createStatement();
 			myRs = myStmt.executeQuery(sql);
-			
+
 			while (myRs.next()) {
 				int id = myRs.getInt("instructorid");
 				String firstName = myRs.getString("firstname");
@@ -62,7 +62,7 @@ public class InstructorDbUtil {
 				String email = myRs.getString("emailadd");
 				int countryId = myRs.getInt("countryid");
 				int useraccId = myRs.getInt("useracctid");
-				
+
 				Instructor tempInstructor = new Instructor( id, lastName, firstName, middleName, bday, contactNo, address, email, countryId, useraccId);
 				instructors.add(tempInstructor);
 			}
@@ -72,7 +72,7 @@ public class InstructorDbUtil {
 			close (myConn, myStmt, myRs);
 		}
 	}
-	
+
 	public void addInstructor(Instructor instructor) throws Exception {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -95,7 +95,7 @@ public class InstructorDbUtil {
 			close (myConn, myStmt);
 		}
 	}
-	
+
 	public Instructor getInstructor(int instructorid) throws Exception {
 		Instructor instructor = null;
 		Connection myConn = null;
@@ -118,7 +118,7 @@ public class InstructorDbUtil {
 				String email = myRs.getString("emailadd");
 				int countryId = myRs.getInt("countryid");
 				int useraccId = myRs.getInt("useracctid");
-				
+
 				instructor =  new Instructor( id, lastName, firstName, middleName, bday, contactNo, address, email, countryId, useraccId);
 			}
 			else {
@@ -131,7 +131,7 @@ public class InstructorDbUtil {
 			close (myConn, myStmt, myRs);
 		}
 	}
-	
+
 	public void updateInstructor(Instructor instructor) throws Exception{
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -158,7 +158,7 @@ public class InstructorDbUtil {
 			close (myConn, myStmt);
 		}
 	}
-	
+
 	public void deleteInstructor(int instructorId) throws Exception {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -173,15 +173,15 @@ public class InstructorDbUtil {
 			close (myConn, myStmt);
 		}
 	}	
-	
+
 	private Connection getConnection() throws Exception {
 		return dataSource.getConnection();
 	}
-	
+
 	private void close(Connection theConn, Statement theStmt) {
 		close(theConn, theStmt, null);
 	}
-	
+
 	private void close(Connection theConn, Statement theStmt, ResultSet theRs) {
 		try {
 			if (theRs != null) {

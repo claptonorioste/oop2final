@@ -12,35 +12,33 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.orioste_practical.Login;
-
-import elearning.modules.*;
+import elearning.modules.Student;
 
 public class StudentDbUtil {
 	private static StudentDbUtil instance;
 	private DataSource dataSource;
 	private String jndiName = "java:comp/env/jdbc/elearning";
-	
+
 	public static StudentDbUtil getInstance() throws Exception {
 		if (instance == null) {
 			instance = new StudentDbUtil();
 		}
-		
+
 		return instance;
 	}
-	
+
 	private StudentDbUtil() throws Exception {		
 		dataSource = getDataSource();
 	}
 
 	private DataSource getDataSource() throws NamingException {
 		Context context = new InitialContext();
-		
+
 		DataSource theDataSource = (DataSource) context.lookup(jndiName);
-		
+
 		return theDataSource;
 	}
-	
+
 	public List<Student> getStudent() throws Exception{
 		List<Student> Students = new ArrayList<>();
 		Connection myConn = null;
@@ -51,7 +49,7 @@ public class StudentDbUtil {
 			String sql = "select * from tblstudentinfo order by last_name";
 			myStmt = myConn.createStatement();
 			myRs = myStmt.executeQuery(sql);
-			
+
 			while (myRs.next()) {
 				int id = myRs.getInt("studentid");
 				String firstName = myRs.getString("firstname");
@@ -63,7 +61,7 @@ public class StudentDbUtil {
 				String email = myRs.getString("emailadd");
 				int countryId = myRs.getInt("countryid");
 				int useraccId = myRs.getInt("useracctid");
-				
+
 				Student tempStudent = new Student( id, lastName, firstName, middleName, bday, contactNo, address, email, countryId, useraccId);
 				Students.add(tempStudent);
 			}
@@ -73,7 +71,7 @@ public class StudentDbUtil {
 			close (myConn, myStmt, myRs);
 		}
 	}
-	
+
 	public void addStudent(Student Student) throws Exception {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -96,7 +94,7 @@ public class StudentDbUtil {
 			close (myConn, myStmt);
 		}
 	}
-	
+
 	public Student getStudent(int Studentid) throws Exception {
 		Student Student = null;
 		Connection myConn = null;
@@ -119,7 +117,7 @@ public class StudentDbUtil {
 				String email = myRs.getString("emailadd");
 				int countryId = myRs.getInt("countryid");
 				int useraccId = myRs.getInt("useracctid");
-				
+
 				Student =  new Student( id, lastName, firstName, middleName, bday, contactNo, address, email, countryId, useraccId);
 			}
 			else {
@@ -132,7 +130,7 @@ public class StudentDbUtil {
 			close (myConn, myStmt, myRs);
 		}
 	}
-	
+
 	public void updateStudent(Student Student) throws Exception{
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -159,7 +157,7 @@ public class StudentDbUtil {
 			close (myConn, myStmt);
 		}
 	}
-	
+
 	public void deleteStudent(int StudentId) throws Exception {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -174,15 +172,15 @@ public class StudentDbUtil {
 			close (myConn, myStmt);
 		}
 	}
-	
+
 	private Connection getConnection() throws Exception {
 		return dataSource.getConnection();
 	}
-	
+
 	private void close(Connection theConn, Statement theStmt) {
 		close(theConn, theStmt, null);
 	}
-	
+
 	private void close(Connection theConn, Statement theStmt, ResultSet theRs) {
 		try {
 			if (theRs != null) {
@@ -197,41 +195,6 @@ public class StudentDbUtil {
 		} catch (Exception exc) {
 			exc.printStackTrace();
 		}
-	}
-	
-	public boolean getAccount(StudentLogin studentCredential) throws Exception {
-		Connection myConn = null;
-		PreparedStatement myStmt = null;
-		ResultSet myRs = null;
-		
-		try {
-			myConn = getConnection();
-
-			String sql = "select * from tblsecuseracct where username=? AND password = ? AND status = ?";
-
-			myStmt = myConn.prepareStatement(sql);
-			
-			// set params
-			
-			myStmt.setString(1, studentCredential.getStudentUsername());
-			myStmt.setString(2, studentCredential.getStudentPassword());
-			myStmt.setInt(3, studentCredential.getStudentStatus());
-			
-			myRs = myStmt.executeQuery();
-
-			// retrieve data from result set row
-			if (myRs.next()) {
-				System.out.print("Success");
-				return true;
-			}else {
-				System.out.print("Failed");
-				return false;
-			}
-
-		}
-		finally {
-			close (myConn, myStmt, myRs);
-		}
-	}
+	}	
 
 }
