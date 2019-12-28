@@ -34,12 +34,12 @@ tblsecuseracct CRUD --> DONE
 tblstudentcart
 tblstudentcourse
 tblstudentinfo CRUD --> DONE
-tblutilcertification
-tblutilcontenttype
+tblutilcertification CRUD --> DONE
+tblutilcontenttype CRUD --> DONE
 tblutilcountry CRUD --> DONE
-tblutilcourse
+tblutilcourse CRUD --> DONE
 tblutilcoursecategory CRUD --> DONE
-tblutildegree
+tblutildegree CRUD --> DONE
 tblutilpaymenttype CRUD --> DONE
 tblutilschool CRUD --> DONE
-tblutiltesttype
+tblutiltesttype CRUD --> DONE
