@@ -12,34 +12,34 @@ Module Progress
     Set Instructor Course Discount  (module/util/controller) - Done - Commited by Orioste 
     Student Login  (module/util/controller) - Done - Commited by Orioste 
 
-tblinstructorcert CRUD -- DONE
+tblinstructorcert CRUD --> DONE
 tblinstructorcorsectestquestion
 tblinstructorcortestquestion
-tblinstructorcourse CRUD -- DONE
-tblinstructorcoursedesc CRUD -- DONE
-tblinstructorcoursediscount CRUD -- DONE
-tblinstructorcoursesched CRUD -- DONE
+tblinstructorcourse CRUD --> DONE
+tblinstructorcoursedesc CRUD --> DONE
+tblinstructorcoursediscount CRUD --> DONE
+tblinstructorcoursesched CRUD --> DONE
 tblinstructorcoursesection
 tblinstructorcoursesectioncontent
 tblinstructorcoursesectiontest
 tblinstructorcoursetest
 tblinstructordegree
-tblinstructorinfo CRUD -- DONE
+tblinstructorinfo CRUD --> DONE
 tblsecgroup
 tblsecgrouppriv
 tblsecgroupusers
 tblsecmodules
 tblsecprivileges
-tblsecuseracct CRUD -- DONE
+tblsecuseracct CRUD --> DONE
 tblstudentcart
 tblstudentcourse
-tblstudentinfo CRUD -- DONE
+tblstudentinfo CRUD --> DONE
 tblutilcertification
 tblutilcontenttype
-tblutilcountry CRUD -- DONE
+tblutilcountry CRUD --> DONE
 tblutilcourse
-tblutilcoursecategory CRUD -- DONE
+tblutilcoursecategory CRUD --> DONE
 tblutildegree
-tblutilpaymenttype CRUD -- DONE
-tblutilschool CRUD -- DONE
+tblutilpaymenttype CRUD --> DONE
+tblutilschool CRUD --> DONE
 tblutiltesttype
