@@ -1,8 +1,9 @@
 package elearning.modules;
 
 public class GroupUsers {
-	int id,useraccId,groupId;
-	String dateAdded;
+	private int id,useraccId,groupId;
+	private String dateAdded;
+	
 	public GroupUsers() {
 		super();
 	}

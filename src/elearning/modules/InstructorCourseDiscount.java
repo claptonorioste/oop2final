@@ -7,6 +7,14 @@ public class InstructorCourseDiscount {
 	private String dateTo = "";
 	private String dateFrom = "" ;
 	private int inscourseid =  0;
+	
+	public InstructorCourseDiscount(int insCourseDiscID, String dateTo, String dateFrom, int inscourseid) {
+		super();
+		this.insCourseDiscID = insCourseDiscID;
+		this.dateTo = dateTo;
+		this.dateFrom = dateFrom;
+		this.inscourseid = inscourseid;
+	}
 	public int getInsCourseDiscID() {
 		return insCourseDiscID;
 	}

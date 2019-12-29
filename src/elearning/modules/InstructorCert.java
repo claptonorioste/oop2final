@@ -1,9 +1,9 @@
 package elearning.modules;
 
 public class InstructorCert {
-	int id;
-	int certId;
-	String dateAcquired;
+	private int id;
+	private int certId;
+	private String dateAcquired;
 	
 	public InstructorCert() {
 		super();

@@ -13,17 +13,17 @@ Module Progress
     Student Login  (module/util/controller) - Done - Commited by Orioste 
 
 tblinstructorcert CRUD --> DONE
-tblinstructorcorsectestquestion
-tblinstructorcortestquestion
+tblinstructorcorsectestquestion CRUD --> DONE
+tblinstructorcortestquestion CRUD --> DONE
 tblinstructorcourse CRUD --> DONE
 tblinstructorcoursedesc CRUD --> DONE
 tblinstructorcoursediscount CRUD --> DONE
 tblinstructorcoursesched CRUD --> DONE
-tblinstructorcoursesection
-tblinstructorcoursesectioncontent
-tblinstructorcoursesectiontest
-tblinstructorcoursetest
-tblinstructordegree
+tblinstructorcoursesection CRUD --> DONE
+tblinstructorcoursesectioncontent CRUD --> DONE
+tblinstructorcoursesectiontest CRUD --> DONE
+tblinstructorcoursetest CRUD --> DONE
+tblinstructordegree CRUD --> DONE
 tblinstructorinfo CRUD --> DONE
 tblsecgroup CRUD --> DONE
 tblsecgrouppriv CRUD --> DONE

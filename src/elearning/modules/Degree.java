@@ -1,8 +1,8 @@
 package elearning.modules;
 
 public class Degree {
-	int id;
-	String degreeName;
+	private int id;
+	private String degreeName;
 	public Degree() {
 		super();
 	}

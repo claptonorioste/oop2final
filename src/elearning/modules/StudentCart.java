@@ -1,9 +1,9 @@
 package elearning.modules;
 
 public class StudentCart {
-	int id,studId,inscourseId;
-	String dateAdded;
-	double amountPrice,discount;
+	private int id,studId,inscourseId;
+	private String dateAdded;
+	private double amountPrice,discount;
 	public StudentCart() {
 		super();
 	}

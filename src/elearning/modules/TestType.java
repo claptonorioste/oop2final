@@ -1,8 +1,8 @@
 package elearning.modules;
 
 public class TestType {
-	int id;
-	String testType;
+	private int id;
+	private String testType;
 	public TestType() {
 		super();
 	}

@@ -1,9 +1,9 @@
 package elearning.modules;
 
 public class StudentCourse {
-	int id,studId,inscourseId,payTypeId;
-	String datePurchased;
-	double paidAmount,discount;
+	private int id,studId,inscourseId,payTypeId;
+	private String datePurchased;
+	private double paidAmount,discount;
 	
 	public StudentCourse() {
 		super();

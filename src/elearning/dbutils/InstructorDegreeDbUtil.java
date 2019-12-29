@@ -1,5 +1,4 @@
 package elearning.dbutils;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,21 +11,21 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import elearning.modules.Course;
-public class CourseDbUtil {
-	private static CourseDbUtil instance;
+import elearning.modules.InstructorDegree;
+public class InstructorDegreeDbUtil {
+	private static InstructorDegreeDbUtil instance;
 	private DataSource dataSource;
 	private String jndiName = "java:comp/env/jdbc/elearning";
 
-	public static CourseDbUtil getInstance() throws Exception {
+	public static InstructorDegreeDbUtil getInstance() throws Exception {
 		if (instance == null) {
-			instance = new CourseDbUtil();
+			instance = new InstructorDegreeDbUtil();
 		}
 
 		return instance;
 	}
 
-	private CourseDbUtil() throws Exception {		
+	private InstructorDegreeDbUtil() throws Exception {		
 		dataSource = getDataSource();
 	}
 
@@ -38,43 +37,43 @@ public class CourseDbUtil {
 		return theDataSource;
 	}
 	//return Lists
-	public List<Course> getCourse() throws Exception{
-		List<Course> course = new ArrayList<>();
+	public List<InstructorDegree> getInstructorDegree() throws Exception{
+		List<InstructorDegree> instructordegree = new ArrayList<>();
 		Connection myConn = null;
 		Statement myStmt = null;
 		ResultSet myRs = null;
 		try {
 			myConn = getConnection();
-			String sql = "select * from tblutilcourse order by last_name";
+			String sql = "select * from tblinstructordegree order by last_name";
 			myStmt = myConn.createStatement();
 			myRs = myStmt.executeQuery(sql);
 
 			while (myRs.next()) {
-				int id = myRs.getInt("courseid");
-				String courseCode = myRs.getString("coursecode");
-				String courseName = myRs.getString("coursename");
-				int courseCategId = myRs.getInt("coursecatid");
+				int id = myRs.getInt("insdegreeid");
+				int degreeId = myRs.getInt("degreeid");
+				String yearGraduated = myRs.getString("yeargraduated");
+				int schoolId = myRs.getInt("schoolid");
 
-				Course tempCourse = new Course(id,courseCode,courseName,courseCategId);
-				course.add(tempCourse);
+				InstructorDegree tempInstructorDegree = new InstructorDegree(id,degreeId,yearGraduated,schoolId);
+				instructordegree.add(tempInstructorDegree);
 			}
-			return course;		
+			return instructordegree;		
 		}
 		finally {
 			close (myConn, myStmt, myRs);
 		}
 	}
 	//Adding
-	public void addCourse(Course course) throws Exception {
+	public void addInstructorDegree(InstructorDegree instructordegree) throws Exception {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		try {
 			myConn = getConnection();
-			String sql = "INSERT INTO tblutilcourse values (?,?,?)";
+			String sql = "INSERT INTO tblinstructordegree values (?)";
 			myStmt = myConn.prepareStatement(sql);
-			myStmt.setString(1, course.getCourseCode());
-			myStmt.setString(2, course.getCourseName());
-			myStmt.setInt(3, course.getCourseCategId());
+			myStmt.setInt(1, instructordegree.getDegreeId());
+			myStmt.setString(2, instructordegree.getYearGraduated());
+			myStmt.setInt(3, instructordegree.getSchoolId());
 			myStmt.execute();			
 		}
 		finally {
@@ -82,49 +81,49 @@ public class CourseDbUtil {
 		}
 	}
 	//return data by id
-	public Course getCourse(int courseid) throws Exception {
-		Course course = null;
+	public InstructorDegree getInstructorDegree(int instructordegreeid) throws Exception {
+		InstructorDegree instructordegree = null;
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRs = null;
 		try {
 			myConn = getConnection();
-			String sql = "select * from tblutilcourse where courseid=?";
+			String sql = "select * from tblinstructordegree where insdegreeid	=?";
 			myStmt = myConn.prepareStatement(sql);
-			myStmt.setInt(1, courseid);
+			myStmt.setInt(1, instructordegreeid);
 			myRs = myStmt.executeQuery();
 			if (myRs.next()) {
-				int id = myRs.getInt("courseid");
-				String courseCode = myRs.getString("coursecode");
-				String courseName = myRs.getString("coursename");
-				int courseCategId = myRs.getInt("coursecatid");
+				int id = myRs.getInt("insdegreeid");
+				int degreeId = myRs.getInt("degreeid");
+				String yearGraduated = myRs.getString("yeargraduated");
+				int schoolId = myRs.getInt("schoolid");
 				
-				course = new Course(id,courseCode,courseName,courseCategId);
+				instructordegree = new InstructorDegree(id,degreeId,yearGraduated,schoolId);
 			}
 			else {
-				throw new Exception("Could not find courseid id: " + courseid);
+				throw new Exception("Could not find instructordegreeid id: " + instructordegreeid);
 			}
 
-			return course;
+			return instructordegree;
 		}
 		finally {
 			close (myConn, myStmt, myRs);
 		}
 	}
 	//Update
-	public void updateCourse(Course course) throws Exception{
+	public void updateInstructorDegree(InstructorDegree instructordegree) throws Exception{
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		try {
 			myConn = getConnection();
-			String sql = "update tblutilcourse "
-						+ " set coursecode=?,coursename=?,coursecatid=? "
-						+ " where courseid=?";
+			String sql = "update tblinstructordegree "
+						+ " set degreeid=? ,yeargraduated=?,schoolid=?"
+						+ " where insdegreeid	=?";
 			myStmt = myConn.prepareStatement(sql);
-			myStmt.setString(1, course.getCourseCode());
-			myStmt.setString(2, course.getCourseName());
-			myStmt.setInt(3, course.getCourseCategId());
-			myStmt.setInt(4, course.getId());
+			myStmt.setInt(1, instructordegree.getDegreeId());
+			myStmt.setString(2, instructordegree.getYearGraduated());
+			myStmt.setInt(3, instructordegree.getSchoolId());
+			myStmt.setInt(4, instructordegree.getId());
 			myStmt.execute();
 		}
 		finally {
@@ -132,14 +131,14 @@ public class CourseDbUtil {
 		}
 	}
 	//Delete
-	public void deleteCourse(int courseid) throws Exception {
+	public void deleteInstructorDegree(int instructordegreeid) throws Exception {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		try {
 			myConn = getConnection();
-			String sql = "delete from tblutilcourse where courseid=?";
+			String sql = "delete from tblinstructordegree where insdegreeid	=?";
 			myStmt = myConn.prepareStatement(sql);
-			myStmt.setInt(1, courseid);
+			myStmt.setInt(1, instructordegreeid);
 			myStmt.execute();
 		}
 		finally {

@@ -1,9 +1,9 @@
 package elearning.modules;
 
 public class Course {
-	int id;
-	String courseCode;
-	String courseName;
+	private int id;
+	private String courseCode;
+	private String courseName;
 	int courseCategId;
 	public Course() {
 		super();

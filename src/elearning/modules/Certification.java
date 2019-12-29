@@ -1,8 +1,8 @@
 package elearning.modules;
 
 public class Certification {
-	int id;
-	String certName;
+	private int id;
+	private String certName;
 	public Certification() {
 		super();
 	}

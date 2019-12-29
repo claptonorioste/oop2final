@@ -1,8 +1,9 @@
 package elearning.modules;
 
 public class GroupPriv {
-	int id,groupId,privId,moduleId;
-	String dateAdded;
+	private int id,groupId,privId,moduleId;
+	private String dateAdded;
+	
 	public GroupPriv() {
 		super();
 	}

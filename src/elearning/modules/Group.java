@@ -1,9 +1,9 @@
 package elearning.modules;
 
 public class Group {
-	int id;
-	String groupName;
-	int status;
+	private int id;
+	private String groupName;
+	private int status;
 	public Group() {
 		super();
 	}

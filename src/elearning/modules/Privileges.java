@@ -1,8 +1,8 @@
 package elearning.modules;
 
 public class Privileges {
-	int id;
-	String privName;
+	private int id;
+	private String privName;
 	public Privileges() {
 		super();
 	}

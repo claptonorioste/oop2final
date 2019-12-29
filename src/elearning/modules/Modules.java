@@ -1,8 +1,8 @@
 package elearning.modules;
 
 public class Modules {
-	int id;
-	String moduleName;
+	private int id;
+	private String moduleName;
 	public Modules() {
 		super();
 	}

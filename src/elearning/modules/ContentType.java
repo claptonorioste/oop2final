@@ -1,8 +1,8 @@
 package elearning.modules;
 
 public class ContentType {
-	int id;
-	String contentType;
+	private int id;
+	private String contentType;
 	public ContentType() {
 		super();
 	}
