@@ -25,14 +25,14 @@ tblinstructorcoursesectiontest
 tblinstructorcoursetest
 tblinstructordegree
 tblinstructorinfo CRUD --> DONE
-tblsecgroup
-tblsecgrouppriv
-tblsecgroupusers
-tblsecmodules
-tblsecprivileges
+tblsecgroup CRUD --> DONE
+tblsecgrouppriv CRUD --> DONE
+tblsecgroupusers CRUD --> DONE
+tblsecmodules CRUD --> DONE
+tblsecprivileges CRUD --> DONE
 tblsecuseracct CRUD --> DONE
-tblstudentcart
-tblstudentcourse
+tblstudentcart CRUD --> DONE
+tblstudentcourse CRUD --> DONE
 tblstudentinfo CRUD --> DONE
 tblutilcertification CRUD --> DONE
 tblutilcontenttype CRUD --> DONE
