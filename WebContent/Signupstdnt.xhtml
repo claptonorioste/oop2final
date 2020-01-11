@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"></link>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+	
+	<title>SIGNUP</title>
+	
+</h:head>
+<h:body>
+<div class="container">
+  <h2></h2>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">Sign Up</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"></button>
+          <h4 class="modal-title">Sign Up and Start Learning!</h4>
+        </div>
+        <div class="modal-body">
+          <h:form>
+				<div class="form-row">
+					<div class="col form-group">
+						<label>First name </label>   
+					  	<input type="text" class="form-control" value="" id="firstName" placeholder="Enter First Name"></input>
+					</div> <!-- form-group end.// -->
+					<div class="col form-group">
+						<label>Last name</label>
+					  	<input type="text" class="form-control" value="" id="lastName"  placeholder="Enter Last Name"></input>
+					</div> <!-- form-group end.// -->
+				</div> 
+					<div class="col form-group">
+						<label>Middle Name</label>   
+					  	<input type="text" class="form-control" value="" id="middleName" placeholder="Enter Middle Name"></input>
+					</div> <!-- form-group end.// -->
+					<div class="col form-group">
+						<label>Birthday</label>
+					  	<input type="text" class="form-control" value="" id="bday" placeholder="Enter Birthday"></input>
+					</div> <!-- form-group end.// -->
+					<div class="col form-group">
+						<label>Contact Number</label>   
+					  	<input type="text" class="form-control" value="" id="contactno" placeholder="Enter Contact No."></input>
+					</div> <!-- form-group end.// -->
+					<div class="col form-group">
+						<label>Address</label>
+					  	<input type="text" class="form-control" value="" id="address" placeholder="Enter Address"></input>
+					</div> <!-- form-group end.// -->
+					<div class="col form-group">
+						<label>Email Address</label>
+					  	<input type="text" class="form-control" value="" id="emailadd" placeholder="Enter Email Address"></input>
+					</div> <!-- form-group end.// -->
+					<div class="col form-group">
+						<label>Create User Name</label>
+					  	<input type="text" class="form-control" value="" id="username" placeholder="Enter your Username"></input>
+					</div> <!-- form-group end.// -->
+					<div class="form-group">
+						<label>Create password</label>
+					    <input class="form-control" type="password" value="" id="password" placeholder="Enter your Password"></input>
+					</div> 
+	
+				    <div class="form-group">
+				        <button type="submit" class="btn btn-primary btn-block"> Register  </button>
+				    </div> <!-- form-group// -->      
+				    <small class="text-muted">By clicking the 'Sign Up' button, you confirm that you accept our Terms of use and Privacy Policy.</small> 
+			</h:form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+</h:body>
+</html>
