@@ -7,12 +7,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import elearning.modules.UserAccount;
+
+@ManagedBean
+@ApplicationScoped
 public class UserAccountDbUtil {
 	private static UserAccountDbUtil instance;
 	private DataSource dataSource;
@@ -146,6 +151,40 @@ public class UserAccountDbUtil {
 			close (myConn, myStmt);
 		}
 	}
+	//Send Login Credentials
+	public List<UserAccount> login(UserAccount studentCredential) throws Exception{
+		List<UserAccount> studentLogin = new ArrayList<>();
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+		try {
+			myConn = getConnection();
+			String sql = "select * from tblsecuseracct where username=? AND password = ?";
+			myStmt = myConn.prepareStatement(sql);
+			
+			
+			// set params
+			
+			myStmt.setString(1, studentCredential.getUsername());
+			myStmt.setString(2, studentCredential.getPassword());
+			myRs = myStmt.executeQuery();
+			
+
+			while (myRs.next()) {
+				int id = myRs.getInt("useracctid");
+				String username = myRs.getString("username");
+				String password = myRs.getString("password");
+				int status = myRs.getInt("status");
+
+				UserAccount loginInfo = new UserAccount(id,username,password,status);
+				studentLogin.add(loginInfo);
+			}
+			return studentLogin;		
+		}
+		finally {
+			close (myConn, myStmt, myRs);
+		}
+	}
 	//Connection
 	private Connection getConnection() throws Exception {
 		return dataSource.getConnection();
@@ -170,4 +209,5 @@ public class UserAccountDbUtil {
 			exc.printStackTrace();
 		}
 	}
+	
 }

@@ -1,10 +1,28 @@
 package elearning.modules;
 
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
 public class UserAccount {
 	private int id;
 	private String username;
 	private String password;
+	private String usertype;
+	private String isValid;
+	public String getIsValid() {
+		return isValid;
+	}
+	public void setIsValid(String isValid) {
+		this.isValid = isValid;
+	}
+	public String getUsertype() {
+		return usertype;
+	}
+	public void setUsertype(String usertype) {
+		this.usertype = usertype;
+	}
 	private int status;
+	
 	
 	public UserAccount() {
 		super();
