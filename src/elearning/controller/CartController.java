@@ -26,14 +26,14 @@ public class CartController {
 		studentCartDbUtil = StudentCartDbUtil.getInstance();
 	}
 	
-	public String addCart(StudentCart thestudent) {
+	public String addCart(StudentCart thestudentcart) {
 
-		logger.info("Adding Cart: " + thestudent);
+		logger.info("Adding Cart: " + thestudentcart);
 
 		try {
 			
 			// add student to the database
-			studentCartDbUtil.addStudentCart(thestudent);
+			studentCartDbUtil.addStudentCart(thestudentcart);
 			
 		} catch (Exception exc) {
 			// send this to server logs

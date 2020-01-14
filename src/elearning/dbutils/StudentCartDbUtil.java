@@ -72,13 +72,14 @@ public class StudentCartDbUtil {
 		PreparedStatement myStmt = null;
 		try {
 			myConn = getConnection();
-			String sql = "insert into tblstudentcart (studentid, inscourseid, dateadded, amountprice, discount) values (?,?,?,?,?)";
+			String sql = "insert into tblstudentcart (studcourseid, studentid, inscourseid, dateadded, amountprice, discount) values (?,?,?,?,?,?)";
 			myStmt = myConn.prepareStatement(sql);
-			myStmt.setInt(1, thestudentcart.getStudId());
-			myStmt.setInt(2, thestudentcart.getInscourseId());
-			myStmt.setString(3, thestudentcart.getDateAdded());
-			myStmt.setDouble(4, thestudentcart.getAmountPrice());
-			myStmt.setDouble(5, thestudentcart.getDiscount());
+			myStmt.setInt(1, thestudentcart.getId());
+			myStmt.setInt(2, thestudentcart.getStudId());
+			myStmt.setInt(3, thestudentcart.getInscourseId());
+			myStmt.setString(4, thestudentcart.getDateAdded());
+			myStmt.setDouble(5, thestudentcart.getAmountPrice());
+			myStmt.setDouble(6, thestudentcart.getDiscount());
 			
 			myStmt.execute();			
 		}
