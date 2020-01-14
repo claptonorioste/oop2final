@@ -46,7 +46,7 @@ public class CourseCategoryDbUtil {
 		ResultSet myRs = null;
 		try {
 			myConn = getConnection();
-			String sql = "select * from tblutilcoursecategory order by last_name";
+			String sql = "select * from tblutilcoursecategory";
 			myStmt = myConn.createStatement();
 			myRs = myStmt.executeQuery(sql);
 
@@ -57,6 +57,7 @@ public class CourseCategoryDbUtil {
 				CourseCategory tempCoursecategorys = new CourseCategory( id, categoryName);
 				coursecategorys.add(tempCoursecategorys);
 			}
+			System.out.print(coursecategorys);
 			return coursecategorys;		
 		}
 		finally {
