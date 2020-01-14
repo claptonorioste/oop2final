@@ -9,6 +9,8 @@ public class UserAccount {
 	private String password;
 	private String usertype;
 	private String isValid;
+	private int status;
+	
 	public String getIsValid() {
 		return isValid;
 	}
@@ -21,9 +23,6 @@ public class UserAccount {
 	public void setUsertype(String usertype) {
 		this.usertype = usertype;
 	}
-	private int status;
-	
-	
 	public UserAccount() {
 		super();
 	}

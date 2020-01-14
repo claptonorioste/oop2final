@@ -2,7 +2,6 @@ package com.orioste_practical;
 
 import javax.faces.bean.ManagedBean;
 
-@ManagedBean
 public class Student {
 
 	private int id;
