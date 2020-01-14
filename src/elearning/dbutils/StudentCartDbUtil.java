@@ -45,7 +45,7 @@ public class StudentCartDbUtil {
 		ResultSet myRs = null;
 		try {
 			myConn = getConnection();
-			String sql = "select * from tblstudentcart order by last_name";
+			String sql = "select * from tblstudentcart order by studcourseid";
 			myStmt = myConn.createStatement();
 			myRs = myStmt.executeQuery(sql);
 
