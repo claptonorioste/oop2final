@@ -1,18 +1,25 @@
 package elearning.dbutils;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import elearning.modules.Course;
+
+@ManagedBean
+@ApplicationScoped
+
 public class CourseDbUtil {
 	private static CourseDbUtil instance;
 	private DataSource dataSource;
@@ -153,6 +160,9 @@ public class CourseDbUtil {
 
 	private void close(Connection theConn, Statement theStmt) {
 		close(theConn, theStmt, null);
+	}
+	public void print() {
+		System.out.print("HELLO");
 	}
 
 	private void close(Connection theConn, Statement theStmt, ResultSet theRs) {
