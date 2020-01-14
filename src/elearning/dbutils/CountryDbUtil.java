@@ -62,6 +62,28 @@ public class CountryDbUtil {
 		}
 	}
 
+	public List<String> getCountrys() throws Exception{
+		List<String> countrys = new ArrayList<>();
+		Connection myConn = null;
+		Statement myStmt = null;
+		ResultSet myRs = null;
+		try {
+			myConn = getConnection();
+			String sql = "select * from tblutilcountry order by last_name";
+			myStmt = myConn.createStatement();
+			myRs = myStmt.executeQuery(sql);
+
+			while (myRs.next()) {
+				String countryName = myRs.getString("countryname");
+				countrys.add(countryName);
+			}
+			return countrys;		
+		}
+		finally {
+			close (myConn, myStmt, myRs);
+		}
+	}
+
 	public void addCountry(Country country) throws Exception {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;

@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+  <title><ui:insert name="title">BSIT-4R3</ui:insert></title>
+  <h:outputStylesheet library="css" name="page.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+</h:head>
+
+<h:body class='container'>
+	<div class="container">
+		<h1>Sign Up and Start Learning!</h1>
+	</div>
+	<div class="container">
+	<h:form>
+				<div class="form-row">
+					<div class="col form-group">
+					<h:outputLabel for="firstName">First name</h:outputLabel>
+						<h:inputText class="form-control" value="#{student.firstName}" id="firstName" label="Firstname"
+									 required="true" requiredMessage="Enter Firstname"/>
+						<h:message for="firstName" style="color:red"/>
+					</div> <!-- form-group end.// -->
+					
+					<div class="col form-group">
+						<label>Last name</label>
+						<h:inputText class="form-control" value="#{student.lastName}" id="lastName" label="LastName"
+									 required="true" requiredMessage="Enter LastName"/>
+						<h:message for="lastName" style="color:red"/>
+					</div> <!-- form-group end.// -->
+					
+					<div class="col form-group">
+						<label>Middle Name</label>
+						<h:inputText class="form-control" value="#{student.middleName}" id="middleName" label="MiddleName"
+									 required="true" requiredMessage="Enter MiddleName"/>
+						<h:message for="middleName" style="color:red"/>   
+					</div> <!-- form-group end.// -->
+					
+					<div class="col form-group">
+						<label>Birthday</label>
+						<h:inputText class="form-control" value="#{student.bday}" id="bday" label="BirthDate"
+									 required="true" requiredMessage="Enter BirthDate"/>
+						<h:message for="bday" style="color:red"/>
+					</div> <!-- form-group end.// -->
+					
+					<div class="col form-group">
+						<label>Contact Number</label> 
+						<h:inputText class="form-control" value="#{student.contactNo}" id="contactNo" label="Contact No."
+									 required="true" requiredMessage="Enter Contact No."/>
+						<h:message for="contactNo" style="color:red"/>
+					</div> <!-- form-group end.// -->
+					
+					<div class="col form-group">
+						<label>Address</label>
+						<h:inputText class="form-control" value="#{student.address}" id="address" label="Address"
+									 required="true" requiredMessage="Enter Address"/>
+						<h:message for="address" style="color:red"/>
+					</div> <!-- form-group end.// -->
+					
+					<div class="col form-group">
+						<label>Country</label>
+						<h:selectOneMenu>
+				            <f:selectItem value="#{signupController.countries}" /> 
+				            <f:selectItem itemLabel="Foo label" />
+						</h:selectOneMenu>
+						<h:message for="address" style="color:red"/>
+					</div> <!-- form-group end.// -->
+					
+					<div class="col form-group">
+						<label>Email Address</label>
+						<h:inputText class="form-control" value="#{student.email}" id="email" label="Email"
+									 required="true" requiredMessage="Enter Email"/>
+						<h:message for="email" style="color:red"/>
+					</div> <!-- form-group end.// -->
+					
+					<div class="col form-group">
+						<label>Create User Name</label>
+						<h:inputText class="form-control" value="#{userAccount.username}" id="username" label="Username"
+									 required="true" requiredMessage="Enter Username"/>
+						<h:message for="lastName" style="color:red"/>
+					</div> <!-- form-group end.// -->
+					<div class="form-group">
+						<label>Create password</label>
+						<h:inputText class="form-control" value="#{userAccount.password}" id="password" label="Password"
+									 required="true" requiredMessage="Enter Password"/>
+						<h:message for="password" style="color:red"/>   
+					</div> 
+				</div> 
+				    <div class="text-right">
+				        <h:commandButton class="btn btn-primary" value="Sign Up" /><br/>
+				        <small class="text-muted">By clicking the 'Sign Up' button, you confirm that you accept our Terms of use and Privacy Policy.</small>
+				    </div>    
+			</h:form>
+	</div>
+</h:body>
+
+</html>
