@@ -248,15 +248,28 @@
         </div>
         <div class="modal-body">
           <h:form>
-				<div class="form-row">
 					<div class="col form-group">
-						<label>First name </label>   
-					  	<input type="text" class="form-control" value="" id="firstName" placeholder="Enter First Name"></input>
+						<label>Student ID</label>   
+					  	<input type="text" class="form-control" value="#{studentCart.studId}" id="studId" placeholder="Student ID"></input>
 					</div> <!-- form-group end.// -->
-					</div>
-	
+					<div class="col form-group">
+						<label>InsCourse ID</label>   
+					  	<input type="text" class="form-control" value="#{studentCart.inscourseId}" id="inscourseID" placeholder="InsCourse ID"></input>
+					</div> <!-- form-group end.// -->
+					<div class="col form-group">
+						<label>Date Added</label>   
+					  	<input type="text" class="form-control" value="#{studentCart.dateAdded}" id="dateAdded" placeholder="Date Added"></input>
+					</div> <!-- form-group end.// -->
+					<div class="col form-group">
+						<label>Amount Price</label>   
+					  	<input type="text" class="form-control" value="#{studentCart.amountPrice}" id="amountPrice" placeholder="Amount Price"></input>
+					</div> <!-- form-group end.// -->
+					<div class="col form-group">
+						<label>Discount</label>   
+					  	<input type="text" class="form-control" value="#{studentCart.discount}" id="discount" placeholder="Discount"></input>
+					</div> <!-- form-group end.// -->
 				    <div class="form-group">
-				        <h:commandButton value="Add to Cart" class="card" action="#{CartController.addCart(Studentcart)}"/>
+				        <h:commandButton value="Add to Cart" class="card" action="#{cartController.addCart(Studentcart)}"/>
 				    </div> <!-- form-group// -->      
 				    <small class="text-muted">By clicking the 'Sign Up' button, you confirm that you accept our Terms of use and Privacy Policy.</small> 
 			</h:form>
@@ -267,7 +280,8 @@
       </div>
       
     </div>
-  </div>
+  </div>							
+  									
 								</div>
 							</div>
 

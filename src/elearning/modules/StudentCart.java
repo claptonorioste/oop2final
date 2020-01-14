@@ -1,5 +1,7 @@
 package elearning.modules;
+import javax.faces.bean.ManagedBean;
 
+@ManagedBean
 public class StudentCart {
 	private int id,studId,inscourseId;
 	private String dateAdded;
