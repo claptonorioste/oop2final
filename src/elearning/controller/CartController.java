@@ -45,7 +45,7 @@ public class CartController {
 			return null;
 		}
 		
-		return "message.xhtml";
+		return "message.xhtml?faces-redirect=true";
 	}
 	
 	private void addErrorMessage(Exception exc) {
