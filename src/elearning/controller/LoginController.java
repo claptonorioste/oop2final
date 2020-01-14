@@ -35,7 +35,7 @@ public class LoginController {
 		
 		if(loginInfo.size()==1) {
 			setCredential.setIsValid("LOGIN SUCCESS");
-			setCredential.setUsertype(setCredential.getUsertype());
+			setCredential.setUsertype("STUDENT");
 			setCredential.setId(loginInfo.get(0).getId());
 		}else {
 			setCredential.setIsValid("LOGIN FAILED");

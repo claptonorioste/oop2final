@@ -43,7 +43,7 @@ public class CountryDbUtil {
 		ResultSet myRs = null;
 		try {
 			myConn = getConnection();
-			String sql = "select * from tblutilcountry order by last_name";
+			String sql = "select * from tblutilcountry";
 			myStmt = myConn.createStatement();
 			myRs = myStmt.executeQuery(sql);
 
@@ -55,6 +55,7 @@ public class CountryDbUtil {
 				Country tempCountry = new Country( id, countryCode, countryName);
 				countrys.add(tempCountry);
 			}
+			System.out.print(countrys);
 			return countrys;		
 		}
 		finally {

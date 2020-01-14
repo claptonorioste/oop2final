@@ -24,6 +24,7 @@ import elearning.modules.Instructor;
 import elearning.dbutils.UserAccountDbUtil;
 import elearning.modules.UserAccount;
 import elearning.dbutils.CountryDbUtil;
+import elearning.dbutils.CourseCategoryDbUtil;
 import elearning.modules.Country;
 
 
@@ -35,9 +36,20 @@ public class SignupController {
 	private InstructorDbUtil instructorDbUtil;
 	private UserAccountDbUtil useraccountDbUtil;
 	private CountryDbUtil countryUtil;
+	
 	private List<String> countries = Arrays.asList("philippines","philippines","philippines");
 	String [] countrys1 = {"philippines","philippines","philippines"};
-	List<String> countryslbl = new ArrayList<String>();
+	List<Country> countryList;
+	
+	
+	public SignupController() throws Exception {
+		countryList = new ArrayList<>();
+		
+		countryUtil = CountryDbUtil.getInstance();
+	}
+	
+	
+	
 	
 	
 	public String[] getCountrys1() {
@@ -55,10 +67,30 @@ public class SignupController {
 		return "homepage?faces-redirect=true";
 	}
 	
-	List<String> getCountrys() throws Exception{
+	public void loadCountry() {
+
+		logger.info("Loading Country");
+		
+		countryList.clear();
+
+		try {
+			
+			// get all students from database
+			countryList = countryUtil.getCountry();
+			
+		} catch (Exception exc) {
+			// send this to server logs
+			//logger.log(Level.SEVERE, "Error loading students", exc);
+			
+			// add error message for JSF page
+			//addErrorMessage(exc);
+		}
+	}
+	
+	public List<Country> getCountries() throws Exception{
 		//countrys = countryUtil.getCountrys();
-		logger.info(""+countries);
-		return countries;
+		//logger.info(""+countries);
+		return countryList;
 	}
 	
 //	void setCountryslbl() throws Exception{

@@ -17,6 +17,9 @@
 	</div>
 	<div class="container">
 	<h:form>
+	<f:metadata>
+  		<f:event type="preRenderView" listener="#{signupController.loadCountry()}"/>
+	</f:metadata>
 				<div class="form-row">
 					<div class="col form-group">
 					<h:outputLabel for="firstName">First name</h:outputLabel>
@@ -63,8 +66,9 @@
 					<div class="col form-group">
 						<label>Country</label>
 						<h:selectOneMenu>
-				            <f:selectItem value="#{signupController.countries}" /> 
-				            <f:selectItem itemLabel="Foo label" />
+				            <f:selectItems var="tempCountry" value="#{signupController.countries}"
+   			 			itemLabel="#{tempCountry.countryName}" itemValue="#{tempCountry.id}"/>
+   			 
 						</h:selectOneMenu>
 						<h:message for="address" style="color:red"/>
 					</div> <!-- form-group end.// -->
